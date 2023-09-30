@@ -1,0 +1,107 @@
+@media screen and (max-width:576px) {
+    @font-face {
+        font-family:Vazirmatn-Light;
+        src: url(../font/Vazirmatn-Light.ttf);
+    }
+    *{
+        font-family:Vazirmatn-Light;
+    }
+   .login{
+    width: 90%;
+    margin:10px auto;
+   } 
+                    /* end of login page  */
+
+
+.navbar>nav>ul>li>a{
+    padding:10px 9px;
+    font-size:14px;
+    }
+    .navbar>nav>ul>li:nth-child(even)>a{
+        color:gold;
+    }
+    /* end of header  */
+    .form-database{
+        background-image:transparent;
+    }
+    /* end  .form-database */
+
+
+    .coffer{
+        margin:5px 0;
+    }
+    .coffer:nth-of-type(5){
+        margin-right:0;
+    }
+}  
+/* Small phone  */
+
+
+
+@media screen and (min-width:576px) {
+    @font-face {
+        font-family:Vazirmatn-Black;
+        src: url(../font/Vazirmatn-Black.ttf
+        
+        );
+    }
+    *{
+        font-family:Vazirmatn-Black;
+        }
+    .navbar>nav>ul>li>a{
+        padding:10px 5px;
+    }
+    .navbar>nav>ul>li:nth-child(even)>a{
+        color:gold;
+    }
+}
+/* Lage phone  */
+
+
+
+
+@media screen and (min-width:786px) {
+    .login{
+        width: 50%;
+        margin:50px auto;
+    }
+    /* end of Login page  */
+
+    .navbar>nav>ul>li>a{
+        padding:10px 15px;
+    }
+
+
+    .coffer:nth-of-type(5){
+        margin-right:20px;
+    }
+   
+}
+/* Tablet  */
+
+
+
+
+
+@media screen and (min-width:992px) {
+    .coffer:nth-of-type(5){
+        margin-right:55px;
+    }
+}
+/*lg Desktop */
+
+
+
+
+@media screen and (min-width:1200px) {
+    
+}
+/* XL Large Desktop */
+
+
+
+@media screen and (min-width:1400px) {
+    
+}
+
+/* XXl  */

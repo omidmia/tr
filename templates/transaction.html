@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <table class="table mt-2 table-hover d-none d-md-flex">
+    <tr>
+      <th>actions</th>
+      <th>شماره :</th>
+      <th>مقدار پول</th>
+      <th>تاریخ</th>
+      <th>تفصیلات</th>
+    </tr>
+
+    {% for transaction in transactions %}
+    <tr class="text-primary">
+      <td><a href="{% url 'agency:delete' obj="transaction" pk=transaction.pk %}" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
+      <td>{{ transaction.id }}</td>
+      <td>{{ transaction.value }}</td>
+      <td>{{ transaction.date }}</td>
+      <td>{{ transaction.description }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h1 class="text-center text-danger">{{ error }}</h1>
+  <div class="col-12">
+    <form class="form" method="post">
+      {% csrf_token %}
+      <div class="form-group col-md-12">
+        <label for="value">مقدار</label>
+        <input
+          type="number"
+          class="form-control"
+          id="value"
+          placeholder="Value"
+          name="value"
+        />
+      </div>
+      <div class="form-group col-md-12">
+        <label for="description"> توضیحات</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          placeholder="description"
+          name="description"
+        />
+      </div>
+      <button class="btn btn-large btn-primary" type="submit">ثبت</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

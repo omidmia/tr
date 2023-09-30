@@ -1,0 +1,175 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row g-4">
+  <h2 style="text-decoration: underline" class="mt-5">تکت هوایی-زمینی</h2>
+  <form method="POST">
+    <h2 class="text-danger">{{ error }}</h2>
+    {% csrf_token %}
+    <section class="col-12 select-service">
+      <select name="ticket_type" id="">
+        <option value="a">هوایی</option>
+        <option value="e">زمینی</option>
+      </select>
+    </section>
+    <!-- end of select-service  -->
+
+    <section class="visa-form">
+      <div class="col-12 col-md-4">
+        <label for="name" class="d-block">اسم :</label>
+        <input
+          class="col-12 col-md-9"
+          type="text"
+          name="customer_name"
+          placeholder="میهن تکنالوژی"
+          id="name"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="total">قیمت گرفته شده * :</label>
+        <input
+          class="col-12 col-md-9"
+          type="number"
+          name="price"
+          id="total"
+          placeholder="00000"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="numpasport">نمبر پاسپورت</label>
+        <input
+          class="col-12 col-md-9"
+          type="number"
+          name="passport_number"
+          id="numpasport"
+          placeholder="568678"
+          minlength="3"
+          maxlength="10"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="privance">ولایت هدف * </label>
+        <input
+          type="text"
+          name="from_city"
+          id="privance"
+          placeholder="کابل"
+          class="col-12 col-md-9"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="polished">قیمت واقعی *</label>
+        <input
+          class="col-12 col-md-9"
+          type="number"
+          name="real_price"
+          id="polished"
+          placeholder="00000"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="phoneNumber">نمبرتماس:</label>
+        <input
+          class="col-12 col-md-9"
+          type="tel"
+          name="phone"
+          id="phoneNumber"
+          placeholder="(+93)785788463"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="privance2">ولایت مقصد :</label>
+        <input
+          type="text"
+          name="to_city"
+          id="privance2"
+          placeholder="تهران"
+          class="col-12 col-md-9"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="charge">مصارف* :</label>
+        <input
+          class="col-12 col-md-9"
+          type="number"
+          name="spended"
+          id="spended"
+          placeholder="200"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="date-refrance">تاریخ مراجعه *:</label>
+        <input
+          class="col-12 col-md-9"
+          type="datetime"
+          name="do_date"
+          id="do_date"
+          placeholder="1402/6/1"
+        />
+      </div>
+    </section>
+    <textarea
+      name="description"
+      class="col-12 h-25 mt-5 p-3"
+      placeholder="تفصیلات"
+    ></textarea>
+    <button class="btn bg-primary mt-2 px-5 text-white">ثبت</button>
+  </form>
+
+  <table class="table col-12 mt-5 table-hover d-none d-md-flex">
+    <thead><h1 class="text-secondary">مجموعه عواید بخش تیکت <span class="badge badge-primary">{{ incomes }}</span></h1></thead>
+    <tr>
+      <th>actions</th>
+      <th>شماره :</th>
+      <th>اسم مشتری :</th>
+      <th>نوع تکت</th>
+      <th>ولایت هدف</th>
+      <th>ولایت مقصد</th>
+      <th>قیمت گرفته شده</th>
+      <th>قیمت انجام شده</th>
+      <th>مصارف</th>
+      <th>نمبر پاسپورت</th>
+      <th>نمبرتلفن</th>
+      <th>عواید</th>
+      <th>تاریخ مراجعه</th>
+      <th>تفصیلات</th>
+    </tr>
+    {% for ticket in tickets %}
+    <tr class="text-primary">
+      <td>
+        <a
+          href="{% url 'agency:delete' obj='ticket' pk=ticket.pk %}"
+          class="btn btn-danger"
+        >
+        <i class="bi bi-trash"></i>
+      </a>
+      </td>
+      <td>{{ ticket.id }}</td>
+      <td>{{ ticket.customer_name }}</td>
+      {% if ticket.type == 'a' %}
+      <td>هوایی</td>
+      {% else %}
+      <td>زمینی</td>
+      {% endif %}
+
+      <td>{{ ticket.from_city }}</td>
+      <td>{{ ticket.to_city }}</td>
+      <td>{{ ticket.real_price}}</td>
+      <td>{{ ticket.price }}</td>
+      <td>{{ ticket.spended }}</td>
+      <td>{{ ticket.passport_number }}</td>
+      <td>{{ ticket.phone }}</td>
+      <td>{{ ticket.get_income }}</td>
+      <td>{{ ticket.do_date }}</td>
+      <td>{{ ticket.description }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}

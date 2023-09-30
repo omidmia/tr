@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %}
+<h1 class="text-primary text-center">افزودن شرکت جدید</h1>
+<div class="col-12">
+  <form class="form" method="post">
+    {% csrf_token %}
+    <div class="col-6">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" class="input input-primary">
+    </div>
+    <div class="col-6">
+      <label for="phone">
+        Phone Number
+      </label>
+      <input type="tel" name="phone" class="input">
+    </div>
+    <div class="col-6">
+      <button class="btn btn-primary btn-large" type="submit"><i class="bi bi-plus">
+      </i></button>
+    </div>
+  </form>
+</div>
+<div class="col-12">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">نام </th>
+        <th scope="col">شماره تماس </th>
+        <th scope="col">ویزا ها</th>
+        <th scope="col">تمدیدی ها</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for company in companies %}
+      <tr>
+        <th scope="row">{{ company.pk }}</th>
+        <td>{{ company.name }}</td>
+        <td>{{ company.phone }}</td>
+        <td>{{ company.visas.count }}</td>
+        <td>{{ company.renews.count }}</td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+  
+</div>
+
+{% endblock content %}

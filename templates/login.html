@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لاگین</title>
+    <link rel="stylesheet" href="{% static 'css/gobal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/local.css' %}">
+</head>
+<body class="body-login">
+    <div class="login">
+            <figure>
+                <img src="{% static '/images/logo-nikpa.png' %}" alt="logo-nikpa" class="img-fluid">
+            </figure>
+            <form method="post">
+                <h3 class="text-danger text-center">{{ form.erros }}</h3>
+                <span class="text-center text-danger">{{ form.erros }}</span>
+                {% csrf_token %}
+                <label for="username">نام کاربری :</label>
+                {{ form.username }}
+
+                <label for="password">رمز عبور :</label>
+                {{ form.password }}
+
+                <input type="submit" name="login" value="ورد">
+                <p> Dont have password_<a href="#">Forgot password</a></p>
+            </form>
+        </div>
+</body>
+</html>

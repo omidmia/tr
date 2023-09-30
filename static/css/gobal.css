@@ -1,0 +1,227 @@
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li{
+    list-style-type:none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    object-fit:cover;
+}
+header,div,section,footer,nav,ul,figure,figcaption,article,aside{
+    display: flex;
+    flex-wrap:wrap;
+}
+
+/* شروع فورم لاگین */
+.body-login{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-image:linear-gradient(to right,rgb(237, 227, 237),rgb(220, 167, 220),rgb(246, 158, 246));
+    opacity:.8;
+    /* background-image:url(../img/bg-login.jpg);
+    background-size:100% 100%;
+    background-position:center; */
+}
+.login{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding:0 20px;
+    border-radius: 10px;
+    background-image:linear-gradient(to right,rgb(237, 227, 237),rgb(227, 192, 227),rgb(246, 158, 246));
+    box-shadow:0 0 80px 5px rgba(24, 24, 24, 0.596);
+    animation:login-animation .2s 1s ease;
+}
+@keyframes login-animation {
+    0%{
+        transform:translateX(0);
+    }
+    50%{
+        transform:translateX(-500px);
+    }
+    100%{
+        transform:translateX(500px);
+    }
+}
+.login>legend{
+    font-weight:bold;
+}
+.login figure{
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+}
+.login figure>img{
+    width: 100%;
+    height: 100%;
+}
+
+.login>form{
+    width: 100%;
+    /* background-color:gray; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.login>form>*{
+    width: 100%;
+}
+.login>form>label{
+    display: flex;
+    margin:20px 0;
+    font-size:20px;
+    padding-right:20px;
+}
+.login>form>input{
+    height: 50px;
+    direction: ltr;
+    padding-left:15px;
+    border:none;
+    border-bottom:2px solid gray;
+    background-color:rgba(128, 128, 128, 0.283);
+}
+.login>form>input:nth-of-type(3){
+    width: 50%;
+    margin:20px auto;
+    background-color:blue;
+    color:white;
+    font-size:20px;
+    border:none;
+}
+.login>form>p{
+    text-align: center;
+    margin-bottom:10px;
+}
+/* قسمت لاگین ختم نهایی شده است  */
+
+
+
+
+
+
+
+.body-database{ 
+    background-image:url(../images/bg-form.jpg);
+    background-size:100% 120%;
+    background-position:top;
+}
+
+.navbar{
+    height:50px;
+}
+.navbar>nav{
+    width: 100%;
+    /* background-color:gray; */
+}
+.navbar>nav>ul{
+    width: 100%;
+}
+.navbar>nav>ul>li{
+    position: relative;
+}
+.navbar>nav>ul>li::after{
+    content:'';
+    display: block;
+    width: 0;
+    height: 0;
+    border:1px solid orange;
+    position: absolute;
+    bottom:-5px;right: 0;
+    transition:.4s;
+    opacity: 0;
+}
+.navbar>nav>ul>li:hover::after{
+    width: 100%;
+    opacity: 1;
+}
+.navbar>nav>ul>li>a{
+    padding:15px 0;
+    color:white;
+    font-weight:bold;
+    font-size:18px;
+}
+.navbar>nav>ul>li>a:hover{
+    color:rgb(222, 217, 217);
+}
+/* end of header  */
+.coffer{
+    height: 400px;
+    background-color:rgba(255, 255, 255, 0.337);
+    margin:20px 20px;
+    border-radius:50px 0 50px 0;
+    animation:coffer  .8s 1s ease;
+    box-shadow:0 0 10px rgba(228, 228, 228, 0.646);
+    display: flex;
+    justify-content: flex-start;
+}
+@keyframes coffer {
+    0%{
+        transform:translateX(0);
+    }
+    50%{
+        transform: translateX(100px);
+    }
+    100%{
+        transform: translateX(-100px);
+    }
+}
+
+
+.form-database{
+    margin:auto;
+}
+
+
+
+
+
+
+
+
+
+/* صحفه اصلی یا خزانه ختم گردیده است */
+.form-database{
+    /* background-color:white; */
+    margin-top:100px;
+    padding-bottom:90px;
+    animation:form 2 .4s 1s alternate;
+    border-radius: 4px;
+}
+@keyframes form {
+    0%{
+        transform:translateX(0);
+    }
+    50%{
+        transform:translateX(100px);
+    }
+    100%{
+        transform:translateX(-100px);
+    }
+}
+
+.select-service{
+    margin:50px 0;
+}
+.select-service>input{
+    display: block;
+    width: 50px;
+}
+/* end of .select-service  */
+.visa-form>div>label{
+    display: block;
+    width: 100%;
+}
+.visa-form>div>input{
+    height:40px;
+    background-image:linear-gradient(to right,rgb(176, 176, 176),rgb(38, 237, 217),white);
+    border:none;
+    padding-right:10px;
+    margin-bottom:15px;
+}

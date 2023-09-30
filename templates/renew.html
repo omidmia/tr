@@ -1,0 +1,163 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row g-4">
+  <form method="POST">
+    {% csrf_token %}
+    <section class="col-12 select-service">
+      <select name="renew_type" id="">
+        <option value="r">تمدیدی</option>
+        <option value="e">خروجی</option>
+      </select>
+    </section>
+    <!-- end of select-service  -->
+
+    <section class="visa-form">
+      <div class="col-12 col-md-4">
+        <label for="name" class="d-block">اسم *</label>
+        <input
+          class="col-12 col-md-9"
+          type="text"
+          name="customer_name"
+          placeholder="میهن تکنالوژی"
+          id="name"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="total"> قیمت گرفته شده * :</label>
+        <input
+          class="col-12 col-md-9"
+          type="number"
+          name="price"
+          id="total"
+          placeholder="00000"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="numpasport">نمبر پاسپورت *</label>
+        <input
+          class="col-12 col-md-9"
+          type="number"
+          name="passport_number"
+          id="numpasport"
+          placeholder="568678"
+          minlength="3"
+          maxlength="10"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="privance">ولایت :</label>
+        <input
+          type="text"
+          name="city"
+          id="privance"
+          placeholder="غزنی"
+          class="col-12 col-md-9"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="polished">قیمت واقعی</label>
+        <input
+          class="col-12 col-md-9"
+          type="number"
+          name="real_price"
+          id="polished"
+          placeholder="00000"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="phoneNumber">نمبرتماس:</label>
+        <input
+          class="col-12 col-md-9"
+          type="tel"
+          name="phone"
+          id="phoneNumber"
+          placeholder="(+93)785788463"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="sender">فرستاده شده</label>
+        <select class="form-select col-9" name="functor">
+          {% for functor in functors %}
+          <option value="{{ functor }}">{{ functor }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="charge">مصارف* :</label>
+        <input
+          class="col-12 col-md-9"
+          type="number"
+          name="spended"
+          id="charge"
+          placeholder="200"
+        />
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="date-refrance">تاریخ مراجعه *:</label>
+        <input
+          class="col-12 col-md-9"
+          type="datetime"
+          name="do_date"
+          id="date-refrance"
+          placeholder="2022-02-12"
+        />
+      </div>
+    </section>
+    <textarea
+      name="description"
+      class="col-11 h-25 p-3 mt-4"
+      placeholder="تفصیلات"
+    ></textarea>
+    <button class="btn bg-primary mt-2 px-5 text-white">ثبت</button>
+  </form>
+
+  <table class="table col-12 mt-5 table-hover d-none d-md-flex">
+    <thead><h1 class="text-secondary">  مجموعه عواید بخش  تمدیدی<span class="badge badge-primary">{{ incomes }}</span></h1></thead>
+    <tr>
+      <th>actions :</th>
+      <th>شماره :</th>
+      <th>اسم مشتری :</th>
+      <th>اسم ولایت</th>
+      <th>نوع ویزه</th>
+      <th>فرستاده</th>
+      <th>قیمت گرفته شده</th>
+      <th>قیمت انجام شده</th>
+      <th>مصارف</th>
+      <th>نمبر پاسپورت</th>
+      <th>نمبرتلفن</th>
+      <th>عواید</th>
+      <th>تاریخ مراجعه</th>
+      <th>تفصیلات</th>
+    </tr>
+    {% for renew in renews %}
+      <tr class="text-primary">
+        <td><a href="{% url 'agency:delete' obj="renew" pk=renew.pk %}" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
+        <td>{{ renew.id }}</td>
+        <td>{{ renew.customer_name }}</td>
+        <td>{{ renew.city }}</td>
+        {% if renew.renew_type == 'r' %}
+          <td>تمدیدی</td>
+        {% else %}  
+          <td>خروجی</td>
+        {% endif %}
+        <td>{{ renew.functor.name }}</td>
+        <td>{{ renew.price }}</td>
+        <td>{{ renew.real_price }}</td>
+        <td>{{ renew.spended }}</td>
+        <td>{{ renew.passport_number }}</td>
+        <td>{{ renew.phone }}</td>
+        <td>{{ renew.get_income }}</td>
+        <td>{{ renew.do_date }}</td>
+        <td>{{ renew.description }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}

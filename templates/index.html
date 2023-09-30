@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+
+{% endblock head %}
+{% block content %}
+<div class="col-3">
+    <div class="card card-primary">
+        <h2 class="card-title"> مجموعه عواید</h2>
+        <div class="card-body">
+            <h1 class="text-danger text-center">
+                <span class="purecounter">{{ all_incomes }}</span></p>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="col-3">
+    <div class="card card-primary">
+        <h2 class="card-title"> مجموعه عواید بخش ویزا</h2>
+        <div class="card-body">
+            <h1 class="text-danger text-center">
+                <span class="purecounter">{{ visa_incomes }}</span>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="col-3">
+    <div class="card card-primary">
+        <h2 class="card-title"> مجموعه عواید بخش تکت</h2>
+        <div class="card-body">
+            <h1 class="text-danger text-center">
+                <span class="purecounter">{{ ticket_incomes }}</span>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="col-3">
+    <div class="card card-primary">
+        <h2 class="card-title"> مجموعه عواید بخش تمدیدی</h2>
+        <div class="card-body">
+            <h1 class="text-danger text-center">
+                <span class="purecounter">{{ renew_incomes }}</span>
+            </h1>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+
+
+{% endblock script %}

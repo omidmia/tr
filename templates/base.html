@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مدیریت</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/gobal.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/local.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    {% block head %}{% endblock head %}
+  </head>
+  <body class="body-database">
+    <main class="container">
+      <header class="row navbar bg-opacity-10">
+        <nav>
+          <ul>
+            <li><a href="{% url 'agency:visa' %}">ویزه</a></li>
+            <li><a href="{% url 'agency:renew' %}">تمدیدی</a></li>
+            <li><a href="{% url 'agency:ticket' %}">تکت</a></li>
+            <li><a href="{% url 'agency:transaction' %}">مصارف</a></li>
+            <li><a href="{% url 'agency:index' %}">خزانه</a></li>
+            <li><a href="{% url 'agency:company' %}">شرکت ها</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="container py-5">
+        {% block content %}{% endblock content %}
+      </div>
+    </main>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+    {% block script %}{% endblock script %}
+  </body>
+</html>
